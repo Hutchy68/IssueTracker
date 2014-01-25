@@ -63,7 +63,7 @@ div.clear {
     <td class="<?php echo $issue->status; ?>"><?php echo htmlspecialchars($issue->title, ENT_QUOTES); ?></td>
     <td><?php echo $this->statusArray[$issue->status]['name']; ?></td>
     <td><?php echo htmlspecialchars($issue->user_name, ENT_QUOTES); ?></td>
-    <td><?php echo date("d-m-Y", strtotime($issue->date_added)); ?></td>
+    <td><?php echo date("d-M-Y", strtotime($issue->date_added)); ?></td>
     <td align="center"><?php if ($this->isLoggedIn && $this->isAdmin) : ?><!--<a href="<?php echo $this->editUrl . $issue->issue_id; ?>"><?php echo wfMsg('edit'); ?></a> | --><a href="<?php echo $this->deleteUrl . $issue->issue_id; ?>"><?php echo wfMsg('delete'); ?></a><?php endif; ?></td>
   </tr>
   <?php endwhile; ?>

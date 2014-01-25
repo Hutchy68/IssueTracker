@@ -60,20 +60,20 @@ div.issueClear {
 <?php endif; ?>
 <div class="issueClear"></div>
 <h2><?php if ($this->auth === false || ($this->auth === true && $this->isLoggedIn === true)): ?>
-<span class="editsection">[<a href="<?php echo $this->addUrl; ?>"><?php echo wfMsg('add'); ?></a>]</span> 
+<span class="editsection" style="font-weight:bold; float:right;">[&nbsp;<a href="<?php echo $this->addUrl; ?>"><?php echo wfMsg('add'); ?></a>&nbsp;]</span> 
 <?php else: ?>
 <span class="editsection"><?php echo wfMsg('login_msg'); ?></span>
 <?php endif; ?>
 <span class="mw-headline"><?php echo wfMsg('view_issues'); ?></span></h2>
-<table cellpadding="3" class="wikitable sortable" width="98%" style="font-size: 90%">
+<table cellpadding="3" class="wikitable sortable" style="font-size: 90%; min-width:100%">
   <tr>
-    <th valign="top" align="left" width="40"><b><?php echo wfMsg('id'); ?></b></th>
-    <th valign="top" align="left" width="80"><b><?php echo wfMsg('type'); ?></b></th>
-    <th valign="top" align="left" width="350"><b><?php echo wfMsg('title'); ?></b></th>
-    <th valign="top" align="left" width="80"><b><?php echo wfMsg('status'); ?></b></th>
-    <th valign="top" align="left" width="90"><b><?php echo wfMsg('assignee'); ?></b></th>
-    <th valign="top" align="left" width="70"><b><?php echo wfMsg('date'); ?></b></th>
-    <th valign="top" align="center" width="100"><b><?php echo wfMsg('action'); ?></b></th>
+    <th valign="top" align="left" width="8%"><b><?php echo wfMsg('id'); ?></b></th>
+    <th valign="top" align="left" width="12%"><b><?php echo wfMsg('type'); ?></b></th>
+    <th valign="top" align="left" width="36%"><b><?php echo wfMsg('title'); ?></b></th>
+    <th valign="top" align="left" width="12%"><b><?php echo wfMsg('status'); ?></b></th>
+    <th valign="top" align="left" width="12%"><b><?php echo wfMsg('assignee'); ?></b></th>
+    <th valign="top" align="left" width="10%"><b><?php echo wfMsg('date'); ?></b></th>
+    <th valign="top" align="left" width="10%"><b><?php echo wfMsg('action'); ?></b></th>
   </tr>
   <?php while ($issue = $this->issues->fetchObject()): ?>
   <tr>
@@ -82,11 +82,8 @@ div.issueClear {
     <td><span class="<?php echo $issue->status; ?>"><?php echo htmlspecialchars($issue->title, ENT_QUOTES); ?></span></td>
     <td style="background-color: #<?php echo $this->issueStatus[$issue->status]['colour']; ?>"><?php echo $this->issueStatus[$issue->status]['name']; ?></td>
     <td><?php echo htmlspecialchars($issue->assignee, ENT_QUOTES); ?></td>
-    <td><?php echo date("d-m-Y", strtotime($issue->priority_date)); ?></td>
-    <td align="center">
-    <?php if ($this->isLoggedIn): ?>
-    	<?php if ($this->hasEditPerms): ?>[<a href="<?php echo $this->editUrl . $issue->issue_id; ?>"><?php echo wfMsg('edit'); ?></a>]&nbsp;<?php endif; ?>
-    	<?php if ($this->hasDeletePerms): ?>[<a href="<?php echo $this->deleteUrl . $issue->issue_id; ?>"><?php echo wfMsg('archive'); ?></a>]<?php endif; ?>
+    <td><?php echo date("d-M-Y", strtotime($issue->priority_date)); ?></td>
+    <td style="font-weight:bold;"><?php if ($this->isLoggedIn): ?><?php if ($this->hasEditPerms): ?><a href="<?php echo $this->editUrl . $issue->issue_id; ?>"><?php echo wfMsg('edit'); ?></a>&nbsp;<?php endif; ?><?php if ($this->hasDeletePerms): ?>&nbsp;[<a href="<?php echo $this->deleteUrl . $issue->issue_id; ?>"><?php echo wfMsg('archive'); ?></a>]<?php endif; ?>
     <?php endif; ?></td>
   </tr>
   <?php endwhile; ?>

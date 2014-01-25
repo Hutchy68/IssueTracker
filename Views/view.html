@@ -27,7 +27,7 @@ td.fieldBgColor {
   </tr>
   <tr>
     <td width="150" align="left" valign="top" class="fieldBgColor">Date </td>
-    <td><?php echo date("d-m-Y H:i:s", strtotime($this->issue->date_created)); ?></td>
+    <td><?php echo date("d-M-Y H:i:s", strtotime($this->issue->date_created)); ?></td>
   </tr>
 </table>
 <p>[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]&nbsp;

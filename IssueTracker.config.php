@@ -36,10 +36,10 @@ class IssueTrackerConfig
 	 */
 	public function setIssueType($type = array()) 
 	{
-		$type['t_bug'] = array('name' => 'Bug', 'colour' => 'FFDFDF');
-		$type['t_fea'] = array('name' => 'New Feature', 'colour' => 'E1FFDF');
-		$type['t_imp'] = array('name' => 'Improvement', 'colour' => 'FFFFCF');
-		$type['t_doc'] = array('name' => 'Doc', 'colour' => 'F9F9F9');
+		$type['t_bug'] = array('name' => 'Review', 'colour' => 'FFDFDF');
+		$type['t_fea'] = array('name' => 'Improvement', 'colour' => 'E1FFDF');
+		$type['t_imp'] = array('name' => 'New Feature', 'colour' => 'FFFFCF');
+		$type['t_doc'] = array('name' => 'Copyedit', 'colour' => 'F9F9F9');
 		$type['t_fee'] = array('name' => 'Feedback', 'colour' => 'E5D4E7');
 		$type['t_tes'] = array('name' => 'Test', 'colour' => 'DFE2FF');
 		
@@ -67,8 +67,9 @@ class IssueTrackerConfig
 	 */
 	public function setIssueStatus($status = array()) 
 	{
-		$status['s_new'] = array('name' => 'New', 'colour' => 'F9F9F9');
-		$status['s_asi'] = array('name' => 'Assigned', 'colour' => 'F9F9F9');
+		$status['s_new'] = array('name' => 'New', 'colour' => 'F2F2F2');
+		$status['s_con'] = array('name' => 'Confirmed', 'colour' => 'CCCCCC');
+		$status['s_asi'] = array('name' => 'Assigned', 'colour' => 'EEEFFE');
 		$status['s_res'] = array('name' => 'Resolved', 'colour' => 'B8EFB3');
 		$status['s_clo'] = array('name' => 'Closed', 'colour' => 'F9F9F9');
 		

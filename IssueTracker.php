@@ -64,12 +64,14 @@ $wgAvailableRights[] = 'issuetracker-assignee';
 
 $wgGroupPermissions['*']['issuetracker-list'] = true;
 $wgGroupPermissions['*']['issuetracker-view'] = true;
-$wgGroupPermissions['*']['issuetracker-add'] = true;
-$wgGroupPermissions['*']['issuetracker-edit'] = true;
-$wgGroupPermissions['*']['issuetracker-archive'] = true;
-$wgGroupPermissions['*']['issuetracker-delete'] = true;
+$wgGroupPermissions['user']['issuetracker-add'] = true;
+$wgGroupPermissions['user']['issuetracker-edit'] = true;
+$wgGroupPermissions['sysop']['issuetracker-archive'] = true;
+$wgGroupPermissions['sysop']['issuetracker-delete'] = true;
 $wgGroupPermissions['sysop']['issuetracker-assign'] = true;
-$wgGroupPermissions['developer']['issuetracker-assignee'] = true;
+$wgGroupPermissions['*']['issuetracker-assignee'] = false;
+$wgGroupPermissions['user']['issuetracker-assignee'] = false;
+$wgGroupPermissions['DocsContributor']['issuetracker-assignee'] = true;
 
 /**
  * A hook to register an alias for the special page
@@ -78,7 +80,7 @@ $wgGroupPermissions['developer']['issuetracker-assignee'] = true;
 function wfIssueTrackerLocalizedTitle(&$specialPageArray, $code = 'en') 
 {
 	// The localized title of the special page is among the messages of the extension:
-	wfLoadExtensionMessages('IssueTracker');
+	// wfLoadExtensionMessages('IssueTracker'); this is deprecated
 	  
 	// Convert from title in text form to DBKey and put it into the alias array:
 	$text = wfMsg('issuetracker');
