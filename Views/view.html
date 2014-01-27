@@ -1,10 +1,13 @@
 <style type="text/css">
 td.fieldBgColor {
-	background-color: #eee
+	background-color: #eeeffe;
 }
+td {
+	border:1px solid #ccc;
+	}
 </style>
 <h2><span class="editsection">[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]</span> <span class="mw-headline">#<?php echo $this->issue->issue_id . ': ' . $this->issue->title; ?></span></h2>
-<table width="100%"  border="0" cellspacing="3" cellpadding="2">
+<table width="100%"  style="border:1px solid #ccc;" cellspacing="3" cellpadding="1">
   <tr>
     <td width="150" align="left" valign="top" class="fieldBgColor">Type</td>
     <td style="background-color: #<?php echo $this->typeArray[$this->issue->type]['colour']; ?>"><?php echo $this->typeArray[$this->issue->type]['name']; ?></td>

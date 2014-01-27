@@ -1,12 +1,20 @@
-<link rel="stylesheet" type="text/css" href="/skins/common/editor/html/html-skin.css"/>
-<script>
-$(document).ready(function()	{	
-	$("#html").jTagEditor({		
-		tagSet:"/skins/common/editor/html/html-tags.js",
-		tagMask:"",
-		insertOnShiftEnter:"\n\n",
-		insertOnCtrlEnter:"" 
-	});
+<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor"
+    ],
+    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify",
+    toolbar2: "bullist numlist outdent indent | link image | preview | forecolor backcolor",
+    image_advtab: true,
+    resize: "both",
+    width : 540
+    
 });
 </script>
 <a name="Add+Issue"></a><h2><span class="editsection">[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]</span> <span class="mw-headline">Add Issue</span></h2>
@@ -17,15 +25,15 @@ $(document).ready(function()	{
   <input type="hidden" name="bt_action" value="<?php echo $this->action; ?>" />
   <input type="hidden" name="bt_project" value="<?php echo $this->project; ?>" />
   <input type="hidden" name="title" value="<?php echo $this->pageKey; ?>" />
-  <table width="530" border="0">
+  <table width="100%" border="0">
     <tr>
       <td width="130" align="left" valign="top"><strong><?php echo wfMsg('title'); ?>:</strong></td>
       <td width="400"><input name="bt_title" tabindex="1" size="30" maxlength="100" id="bt_title" style="width: 415px" value="<?php echo (isset($_POST['bt_title'])) ? $_POST['bt_title'] : ''; ?>" /></td>
     </tr>
-    <tr>
-      <td align="left" valign="top"><strong><?php echo wfMsg('summary'); ?>:</strong></td>
-      <td><textarea rows="10" cols="100" tabindex="2" id="html" class="jTagEditor" accesskey="," name="bt_summary"><?php echo (isset($_POST['bt_summary'])) ? $_POST['bt_summary'] : ''; ?></textarea></td>
-    </tr>
+	<tr>
+	<td align="left" valign="top"><strong><?php echo wfMsg('summary'); ?>:</strong></td>
+	<td style="width:auto;"><textarea rows="15" cols="20" tabindex="2" id="bt_summary" accesskey="," name="bt_summary"><?php echo (isset($_POST['bt_summary'])) ? $_POST['bt_summary'] : ''; ?></textarea></td>
+	</tr>
     <tr>
       <td align="left" valign="top"><strong><?php echo wfMsg('type'); ?>:</strong></td>
       <td><select name="bt_type" id="bt_type" tabindex="3" style="width: 150px">
