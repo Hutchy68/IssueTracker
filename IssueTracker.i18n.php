@@ -11,13 +11,15 @@
  * @license     GNU General Public Licence 2.0 or later
  */
 $messages['en']['issuetracker']    = 'IssueTracker';
-$messages['en']['view_issues']     = 'View Issues';
+$messages['en']['list_issues']     = 'List of Issues';
 $messages['en']['project']         = 'Project';
 $messages['en']['add']             = 'Add New Issue';
 $messages['en']['cancel']          = 'Cancel';
 $messages['en']['edit']            = 'Edit';
 $messages['en']['delete']          = 'Delete';
+$messages['en']['undelete']          = 'UnDelete';
 $messages['en']['archive']         = 'Archive';
+$messages['en']['unarchive']         = 'UnArchive';
 $messages['en']['view']            = 'View';
 $messages['en']['id']              = 'ID';
 $messages['en']['search']          = 'Search Issues';
@@ -41,7 +43,7 @@ $messages['en']['error_bt_title']  = 'Please enter a title';
 $messages['en']['not_authorized']  = 'You are not authorized to view this page';
 $messages['en']['invalid_id']      = 'Invalid issue ID';
 
-$messages['en']['specialpages-group-developer'] = "Documentation Issues";
+$messages['en']['specialpages-group-developer'] = "Developer Issue Tracker";
 
 $messages['en']['group-developer'] = "DocsContributor";
 $messages['en']['group-developer-member'] = "DocsContributor";
@@ -51,7 +53,9 @@ $messages['en']['right-issuetracker-view']      = "View IssueTracker issues";
 $messages['en']['right-issuetracker-add']       = "Add an issue to IssueTracker";
 $messages['en']['right-issuetracker-edit']      = "Edit IssueTracker issues";
 $messages['en']['right-issuetracker-archive']   = "Archive IssueTracker issues";
+$messages['en']['right-issuetracker-unarchive']   = "UnArchive IssueTracker issues";
 $messages['en']['right-issuetracker-delete']    = "Delete IssueTracker issues";
+$messages['en']['right-issuetracker-undelete']    = "UnDelete IssueTracker issues";
 $messages['en']['right-issuetracker-assign']    = "Assign IssueTracker issues to a developer";
 $messages['en']['right-issuetracker-assignee']  = "Able to have issues assigned to them";
 ?>

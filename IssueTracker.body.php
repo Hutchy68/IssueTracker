@@ -35,9 +35,7 @@ class IssueTracker extends SpecialPage
 	 */
 	public function __construct() 
 	{
-		parent::__construct('IssueTracker');
-		// wfLoadExtensionMessages('IssueTracker'); deprecated 
-		
+		parent::__construct('IssueTracker');		
 		$this->_loadConfigFile();
 	}
 	
@@ -145,7 +143,8 @@ class IssueTracker extends SpecialPage
 		}
 		
 		if (array_key_exists($action, array('add'=>'add', 
-											'archive'=>'archive', 
+											'archive'=>'archive',
+											'unarchive'=>'unarchive',
 											'edit'=>'edit',
 											'list'=>'list',
 											'view'=>'view')

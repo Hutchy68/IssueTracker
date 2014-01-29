@@ -6,8 +6,8 @@ td {
 	border:1px solid #ccc;
 	}
 </style>
-<h2><span class="editsection">[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]</span> <span class="mw-headline">#<?php echo $this->issue->issue_id . ': ' . $this->issue->title; ?></span></h2>
-<table width="100%"  style="border:1px solid #ccc;" cellspacing="3" cellpadding="1">
+<h2><span class="editsection" style="float:right;">[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]</span> <span class="mw-headline">#<?php echo $this->issue->issue_id . ': ' . $this->issue->title; ?></span></h2>
+<table style="border:1px solid #ccc; width:100%;">
   <tr>
     <td width="150" align="left" valign="top" class="fieldBgColor">Type</td>
     <td style="background-color: #<?php echo $this->typeArray[$this->issue->type]['colour']; ?>"><?php echo $this->typeArray[$this->issue->type]['name']; ?></td>
@@ -33,7 +33,15 @@ td {
     <td><?php echo date("d-M-Y H:i:s", strtotime($this->issue->date_created)); ?></td>
   </tr>
 </table>
-<p>[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]&nbsp;
-<?php if ($this->isLoggedIn): ?>[<a href="<?php echo $this->editUrl; ?>"><?php echo wfMsg('edit'); ?></a>]&nbsp;
-[<a href="<?php echo $this->deleteUrl; ?>"><?php echo wfMsg('archive'); ?></a>]<?php endif; ?>
-</p>
+<div id="issuetracker-buttons" class="floatright">
+<input type="submit" class="button_active" value="Back" onclick="location.href='<?php echo $this->listUrl; ?>';">
+<?php if ($this->isLoggedIn): ?>
+<input type="submit" class="button_active" value="Edit" onclick="location.href='<?php echo $this->editUrl; ?>';">
+<?php endif; ?>
+<?php if ($this->hasArchivePerms): ?>
+<input type="submit" class="button_active" value="Archive" onclick="location.href='<?php echo $this->deleteUrl; ?>';">
+<?php endif; ?>
+<?php if ($this->hasUnArchivePerms): ?>
+<input type="submit" class="button_active" value="UnArchive" onclick="location.href='<?php echo $this->undeleteUrl; ?>';">
+<?php endif; ?>
+</div>

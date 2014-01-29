@@ -70,7 +70,7 @@ div.clear {
 </table>
 <table border="0">
   <tr>
-    <td><strong><span class="mw-headline"><?php echo wfMsg('type'); ?></span></strong>
+    <td><strong><span class="mw-headline"><?php echo wfMessage('type')->inContentLanguage()->text(); ?></span></strong>
     <table cellpadding="3" class="wikitable" style="font-size: 90%">
         <tr>
         <?php foreach ($this->typeArray as $name => $type): ?>  
@@ -79,7 +79,7 @@ div.clear {
         </tr>
       </table></td>
     <td style="padding-left: 30px">
-    <strong><span class="mw-headline"><?php echo wfMsg('status'); ?></span></strong>
+    <strong><span class="mw-headline"><?php echo wfMessage('status')->inContentLanguage()->text(); ?></span></strong>
 	<table cellpadding="3" class="wikitable" style="font-size: 90%">
         <tr>
         <?php foreach ($this->statusArray as $name => $status): ?>  

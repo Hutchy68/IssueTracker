@@ -44,7 +44,7 @@ $wgAutoloadClasses['IssueTracker'] = $dir . 'IssueTracker.body.php';
 
 // Let MediaWiki know about your new special page.
 $wgSpecialPages['IssueTracker'] = 'IssueTracker'; 
-$wgSpecialPageGroups['IssueTracker']="developer";
+$wgSpecialPageGroups['IssueTracker']= 'developer';
 
 // Add Extension Functions
 $wgExtensionFunctions[] = 'wfIssueTrackerSetParserHook';
@@ -53,25 +53,39 @@ $wgExtensionFunctions[] = 'wfIssueTrackerSetParserHook';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'wfIssueTrackerLocalizedTitle';
 $wgHooks['ParserAfterTidy'][] = 'wfIssueTrackerDecodeOutput';
 
+// Load SchemaUpdates
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'wfIssueTrackerCreateTable';
+
 $wgAvailableRights[] = 'issuetracker-list';
 $wgAvailableRights[] = 'issuetracker-view';
 $wgAvailableRights[] = 'issuetracker-add';
 $wgAvailableRights[] = 'issuetracker-edit';
 $wgAvailableRights[] = 'issuetracker-archive';
+$wgAvailableRights[] = 'issuetracker-unarchive';
 $wgAvailableRights[] = 'issuetracker-delete';
+$wgAvailableRights[] = 'issuetracker-undelete';
 $wgAvailableRights[] = 'issuetracker-assign';
 $wgAvailableRights[] = 'issuetracker-assignee';
 
-$wgGroupPermissions['*']['issuetracker-list'] = true;
-$wgGroupPermissions['*']['issuetracker-view'] = true;
-$wgGroupPermissions['user']['issuetracker-add'] = true;
+$wgGroupPermissions['user']['issuetracker-list'] = true;
+$wgGroupPermissions['user']['issuetracker-view'] = true;
+$wgGroupPermissions['sysop']['issuetracker-add'] = true;
 $wgGroupPermissions['user']['issuetracker-edit'] = true;
 $wgGroupPermissions['sysop']['issuetracker-archive'] = true;
-$wgGroupPermissions['sysop']['issuetracker-delete'] = true;
+$wgGroupPermissions['sysop']['issuetracker-unarchive'] = true;
+// Commenting out the following two lines
+// Working out permissions delete/archive/undelete/unarchive
+// $wgGroupPermissions['sysop']['issuetracker-delete'] = true;
+// $wgGroupPermissions['sysop']['issuetracker-undelete'] = true;
 $wgGroupPermissions['sysop']['issuetracker-assign'] = true;
-$wgGroupPermissions['*']['issuetracker-assignee'] = false;
-$wgGroupPermissions['user']['issuetracker-assignee'] = false;
 $wgGroupPermissions['DocsContributor']['issuetracker-assignee'] = true;
+
+function wfIssueTrackerAssignee()
+{
+	global $wgAssigneeGroup;
+	$wgAssigneeGroup = 'DocsContributor';
+	return $wgAssigneeGroup;
+}
 
 /**
  * A hook to register an alias for the special page
@@ -80,10 +94,9 @@ $wgGroupPermissions['DocsContributor']['issuetracker-assignee'] = true;
 function wfIssueTrackerLocalizedTitle(&$specialPageArray, $code = 'en') 
 {
 	// The localized title of the special page is among the messages of the extension:
-	// wfLoadExtensionMessages('IssueTracker'); this is deprecated
 	  
 	// Convert from title in text form to DBKey and put it into the alias array:
-	$text = wfMsg('issuetracker');
+	$text = wfMessage('issuetracker')->inContentLanguage()->text();
 	$title = Title::newFromText($text);
 	$specialPageArray['IssueTracker'][] = $title->getDBKey();
 	
@@ -115,4 +128,19 @@ function wfIssueTrackerDecodeOutput(&$parser, &$text)
         $text
     );
     return true;
+}
+
+
+function wfIssueTrackerCreateTable( $updater = null ) {
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array(
+				'issue_tracker',
+				dirname( __FILE__ ) . '/issuetracker.sql'
+		);
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'issue_tracker',
+				dirname( __FILE__ ) . '/issuetracker.sql', true ) );
+	}
+	return true;
 }

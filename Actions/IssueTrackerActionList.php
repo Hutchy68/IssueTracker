@@ -78,9 +78,11 @@ class IssueTrackerActionList extends IssueTrackerAction
 		$this->addUrl         = $this->url . 'add';
 		$this->editUrl        = $this->url . 'edit&bt_issueid=';
 		$this->deleteUrl      = $this->url . 'archive&bt_issueid=';
+		$this->undeleteUrl    = $this->url . 'unarchive&bt_issueid=';
 		$this->isLoggedIn     = $wgUser->isLoggedIn();
 		$this->isAllowed      = $wgUser->isAllowed('protect');
-		$this->hasDeletePerms = $this->hasPermission('delete');
+		$this->hasDeletePerms = $this->hasPermission('archive');
+		$this->hasUnDeletePerms = $this->hasPermission('unarchive');
 		$this->hasEditPerms   = $this->hasPermission('edit');
 		$this->hasViewPerms   = $this->hasPermission('view');
 		$this->search         = true;

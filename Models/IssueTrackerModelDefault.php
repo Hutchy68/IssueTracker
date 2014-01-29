@@ -130,8 +130,24 @@ class IssueTrackerModelDefault extends IssueTrackerModel
 	public function archiveIssue($issueId)
 	{
 		$value['deleted'] = 1;
+		$value['status'] = 's_clo';
 		$conds['issue_id'] = (int) $issueId;
 		
+		return $this->_dbr->update($this->_table, $value, $conds);
+	}
+	
+	/**
+	 * UnArchives an issue.
+	 *
+	 * @param int $issueId
+	 * @return bool Returns true on success or false on failure.
+	 */
+	public function unarchiveIssue($issueId)
+	{
+		$value['deleted'] = 0;
+		$value['status'] = 's_new';
+		$conds['issue_id'] = (int) $issueId;
+	
 		return $this->_dbr->update($this->_table, $value, $conds);
 	}
 }

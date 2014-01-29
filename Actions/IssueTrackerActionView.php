@@ -49,18 +49,21 @@ class IssueTrackerActionView extends IssueTrackerAction
 		// Mediawiki globals
 		global $wgScript, $wgRequest;
 		
-		$this->action      = $this->getAction();
-		$this->issueId     = $wgRequest->getText('bt_issueid');
-		$this->pageKey     = $this->getNamespace('dbKey');
-		$this->pageTitle   = $this->getNamespace('text');
-		$this->typeArray   = $this->_config->getIssueType();
-		$this->statusArray = $this->_config->getIssueStatus();
-		$this->formAction  = $wgScript;
-		$this->url         = $wgScript . '?title=' . $this->pageKey . '&bt_action=';
-		$this->editUrl     = $this->url . 'edit&bt_issueid=' . $this->issueId;
-		$this->deleteUrl   = $this->url . 'archive&bt_issueid=' . $this->issueId;
-		$this->listUrl     = $this->url . 'list';
-		$this->isLoggedIn  = $this->isLoggedIn();
+		$this->action      			= $this->getAction();
+		$this->issueId    			= $wgRequest->getText('bt_issueid');
+		$this->pageKey     			= $this->getNamespace('dbKey');
+		$this->pageTitle   			= $this->getNamespace('text');
+		$this->typeArray   			= $this->_config->getIssueType();
+		$this->statusArray 			= $this->_config->getIssueStatus();
+		$this->formAction  			= $wgScript;
+		$this->url         			= $wgScript . '?title=' . $this->pageKey . '&bt_action=';
+		$this->editUrl     			= $this->url . 'edit&bt_issueid=' . $this->issueId;
+		$this->deleteUrl   			= $this->url . 'archive&bt_issueid=' . $this->issueId;
+		$this->undeleteUrl 			= $this->url . 'unarchive&bt_issueid=' . $this->issueId;
+		$this->listUrl     			= $this->url . 'list';
+		$this->isLoggedIn  			= $this->isLoggedIn();
+		$this->hasArchivePerms 		= $this->hasPermission('archive');
+		$this->hasUnArchivePerms 	= $this->hasPermission('unarchive');
 	}
 	
 	/**

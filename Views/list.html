@@ -64,8 +64,8 @@ div.issueClear {
 <?php else: ?>
 <span class="editsection"><?php echo wfMsg('login_msg'); ?></span>
 <?php endif; ?>
-<span class="mw-headline"><?php echo wfMsg('view_issues'); ?></span></h2>
-<table cellpadding="3" class="wikitable sortable" style="font-size: 90%; min-width:100%">
+<span class="mw-headline">Project Name:<?php echo $this->project; ?><?php echo wfMsg('list_issues'); ?></span></h2>
+<table class="wikitable sortable" style="font-size: 90%; min-width:100%">
   <tr>
     <th valign="top" align="left" width="8%"><b><?php echo wfMsg('id'); ?></b></th>
     <th valign="top" align="left" width="12%"><b><?php echo wfMsg('type'); ?></b></th>
@@ -79,7 +79,7 @@ div.issueClear {
   <tr>
     <td><?php if ($this->hasViewPerms): ?><a href="<?php echo $this->viewUrl . $issue->issue_id; ?>"># <?php echo $issue->issue_id; ?></a><?php else: ?># <?php echo $issue->issue_id; endif; ?></td>
     <td style="background-color: #<?php echo $this->issueType[$issue->type]['colour']; ?>"><?php echo $this->issueType[$issue->type]['name']; ?></td>
-    <td><span class="<?php echo $issue->status; ?>"><?php echo htmlspecialchars($issue->title, ENT_QUOTES); ?></span></td>
+    <td><span class="<?php echo $issue->status; ?>"><a href="<?php echo $this->viewUrl . $issue->issue_id; ?>"><?php echo htmlspecialchars($issue->title, ENT_QUOTES); ?></a></span></td>
     <td style="background-color: #<?php echo $this->issueStatus[$issue->status]['colour']; ?>"><?php echo $this->issueStatus[$issue->status]['name']; ?></td>
     <td><?php echo htmlspecialchars($issue->assignee, ENT_QUOTES); ?></td>
     <td><?php echo date("d-M-Y", strtotime($issue->priority_date)); ?></td>

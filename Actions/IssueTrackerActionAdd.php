@@ -114,13 +114,13 @@ class IssueTrackerActionAdd extends IssueTrackerAction
 	{
 		global $IP, $issueTrackerDeveloperGroup;
 		
-		$group = $issueTrackerDeveloperGroup;
+		$group = wfIssueTrackerAssignee();
 		
 		/** @see SpecialListusers **/
 		require_once( $IP."/includes/specials/SpecialListusers.php" );
 		
 		$specialListUsers = new SpecialListUsers();
-    	$users = new UsersPager($specialListUsers->getContext());
+    	$users = new UsersPager($specialListUsers->getContext(), $group);
     	if (! $users->mQueryDone) {
       		$users->doQuery();
     	}
