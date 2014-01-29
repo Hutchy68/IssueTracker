@@ -6,6 +6,13 @@ td {
 	border:1px solid #ccc;
 	}
 </style>
+	<div id="issueSummaryView">
+		<h1>
+			<span class="summary-view">
+				<?php echo wfMsg('summary') . ' ' . wfMsg('view');   ?>
+			</span>
+		</h1>
+	</div>
 <h2><span class="editsection" style="float:right;">[<a href="<?php echo $this->listUrl; ?>"><?php echo wfMsg('back'); ?></a>]</span> <span class="mw-headline">#<?php echo $this->issue->issue_id . ': ' . $this->issue->title; ?></span></h2>
 <table style="border:1px solid #ccc; width:100%;">
   <tr>

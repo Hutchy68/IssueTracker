@@ -17,7 +17,13 @@ tinymce.init({
     
 });
 </script>
-
+	<div id="issueProjectName">
+		<h1>
+			<span class="project-name">
+				<?php echo $this->project; ?><?php echo ' ' . wfMsg('issues'); ?>
+			</span>
+		</h1>
+	</div>
 <h2>
 	<span class="editsection">[<a href="<?php echo $this->listUrl; ?>">
 		<?php echo wfMessage('back')->inContentLanguage()->text(); ?></a>]

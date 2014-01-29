@@ -43,7 +43,7 @@ $wgExtensionMessagesFiles['IssueTracker'] = $dir . 'IssueTracker.i18n.php';
 $wgAutoloadClasses['IssueTracker'] = $dir . 'IssueTracker.body.php'; 
 
 // Let MediaWiki know about your new special page.
-$wgSpecialPages['IssueTracker'] = 'IssueTracker'; 
+$wgSpecialPages['IssueTracker'] = 'IssueTracker';
 $wgSpecialPageGroups['IssueTracker']= 'developer';
 
 // Add Extension Functions
@@ -67,9 +67,9 @@ $wgAvailableRights[] = 'issuetracker-undelete';
 $wgAvailableRights[] = 'issuetracker-assign';
 $wgAvailableRights[] = 'issuetracker-assignee';
 
-$wgGroupPermissions['user']['issuetracker-list'] = true;
-$wgGroupPermissions['user']['issuetracker-view'] = true;
-$wgGroupPermissions['sysop']['issuetracker-add'] = true;
+$wgGroupPermissions['*']['issuetracker-list'] = true;
+$wgGroupPermissions['*']['issuetracker-view'] = true;
+$wgGroupPermissions['user']['issuetracker-add'] = true;
 $wgGroupPermissions['user']['issuetracker-edit'] = true;
 $wgGroupPermissions['sysop']['issuetracker-archive'] = true;
 $wgGroupPermissions['sysop']['issuetracker-unarchive'] = true;

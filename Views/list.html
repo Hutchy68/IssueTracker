@@ -18,6 +18,13 @@ div.issueClear {
 	text-decoration: line-through;
 }
 </style>
+	<div id="issueProjectName">
+		<h1>
+			<span class="project-name">
+				<?php echo $this->project; ?><?php echo ' ' . wfMsg('issues'); ?>
+			</span>
+		</h1>
+	</div>
 <?php if (isset($this->filter) && $this->filter === true): ?>
 <div id="issueFilterBox">
 	<form name="bt_filter" method="get" action="<?php echo $this->formAction; ?>">
@@ -31,6 +38,7 @@ div.issueClear {
 	    <option value="all"<?php echo ($this->filterBy == null) ? ' selected="true"' : ''; ?>>All issues</option>
 	    <option value="reported_by_me"<?php echo ($this->filterBy == 'reported_by_me') ? ' selected="true"' : ''; ?>>Reported by me</option>
 	    <option value="assined_to_me"<?php echo ($this->filterBy == 'assined_to_me') ? ' selected="true"' : ''; ?>>Assigned to me</option>
+	  </optgroup>
 	  </select>
 	  <?php endif; ?>
 	  <select name="bt_filter_status">
@@ -59,12 +67,18 @@ div.issueClear {
 </div>
 <?php endif; ?>
 <div class="issueClear"></div>
-<h2><?php if ($this->auth === false || ($this->auth === true && $this->isLoggedIn === true)): ?>
-<span class="editsection" style="font-weight:bold; float:right;">[&nbsp;<a href="<?php echo $this->addUrl; ?>"><?php echo wfMsg('add'); ?></a>&nbsp;]</span> 
-<?php else: ?>
-<span class="editsection"><?php echo wfMsg('login_msg'); ?></span>
-<?php endif; ?>
-<span class="mw-headline">Project Name:<?php echo $this->project; ?><?php echo wfMsg('list_issues'); ?></span></h2>
+	<h2>
+		<?php if ($this->auth === false || ($this->auth === true && $this->isLoggedIn === true)): ?>
+			<span class="editsection" style="font-weight:bold; float:right;">
+			[&nbsp;<a href="<?php echo $this->addUrl; ?>"><?php echo wfMsg('add'); ?></a>&nbsp;]
+			</span> 
+		<?php else: ?>
+			<span class="editsection"><?php echo wfMsg('login_msg'); ?></span>
+		<?php endif; ?>
+			<span class="mw-headline">
+			<?php echo wfMsg('list_issues'); ?>
+		</span>
+	</h2>
 <table class="wikitable sortable" style="font-size: 90%; min-width:100%">
   <tr>
     <th valign="top" align="left" width="8%"><b><?php echo wfMsg('id'); ?></b></th>
@@ -110,5 +124,5 @@ div.issueClear {
   </tr>
 </table>
 <p>
-<?php global $wgScriptPath;  if ($this->isAllowed) { echo "<a href='{$wgScriptPath}/index.php?title=Special:UserRights'>User groups</a>"; } ?>
+<?php global $wgScriptPath;  if ($this->isAllowed) { echo "<a href='{$wgScriptPath}/index.php?title=Special:UserRights'>User Rights Management</a>"; } ?>
 </p>
