@@ -8,7 +8,8 @@ Install by grabbing the latest [stable release](https://github.com/Hutchy68/Issu
 ```
 require_once "$IP/extensions/IssueTracker/IssueTracker.php";
 ```
-3. Verify installation by browsing to Special:Version.
+
+Verify installation by browsing to Special:Version.
 
 The IssueTracker extension is a simple and powerful bug tracking and issue tracking system developed to make this process easier for your team. It introduces the <issues /> tag to the MediaWiki markup, which can be used to produce an issue and bug tracking system.
 
