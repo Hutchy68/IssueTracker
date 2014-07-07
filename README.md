@@ -2,7 +2,7 @@
 
 Install by grabbing the latest [stable release](https://github.com/Hutchy68/IssueTracker/releases/tag/stable-1.0.2)
 
-1. Place files in your `/extension` directory
+1. Place files in your `/extensions` directory
 
 2. In `localsettings.php` add:
 ```
