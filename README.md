@@ -1,7 +1,5 @@
 ## IssueTracker for MediaWiki
 
-[![Build Status](https://travis-ci.org/Hutchy68/IssueTracker.svg?branch=master)](https://travis-ci.org/Hutchy68/IssueTracker)
-
 The IssueTracker extension is a simple and powerful bug tracking and issue tracking system developed to make this process easier for your team. It introduces the <issues /> tag to the MediaWiki markup, which can be used to produce an issue and bug tracking system.
 
 ## Installation
